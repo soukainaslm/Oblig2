@@ -4,6 +4,7 @@ package no.oslomet.cs.algdat;
 ////////////////// class DobbeltLenketListe //////////////////////////////
 
 
+import com.sun.tools.corba.se.idl.constExpr.Not;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Comparator;
@@ -256,24 +257,32 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public void nullstill() {
-        /*
+       /* Node<T> t = hode.neste;
+        while (t != hode){
+            Node<T> neste = t.neste;
+            t.neste = t.forrige = null;
+            t.verdi = null;
+            t = neste;
+        }
+        hode.neste = hode.forrige = hode;
+        antall = 0;
+        endringer++;*/
+        if (this == null)throw new NotImplementedException();
         //1.måten
         for (Node<T> temp = hode; temp.neste != null; temp = temp.neste){
             temp.verdi = null;
             temp.forrige = null;
-            temp.neste = null;
             endringer++;
         }
         hode = hale = null;
         antall = 0;
-*/
+/*
        //2.måten
         int index = 0;
         for (Node<T> temp = hode; temp.neste != null; temp = temp.neste) {
             fjern(index);
             index ++;
-        }
-        throw new NotImplementedException();
+        }*/
 
     }
 
