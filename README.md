@@ -1,15 +1,16 @@
-# Obligatorisk oppgave 1 i Algoritmer og Datastrukturer
+# Obligatorisk oppgave 2 i Algoritmer og Datastrukturer
 
 Denne oppgaven er en innlevering i Algoritmer og Datastrukturer. 
 Oppgaven er levert av følgende studenter:
-* Navn Navnesen, S981737, s981737@oslomet.no
-* ...
+* Ridwan Ibrahim - S305360
+* Soukaina Salam, S331419
+* Zarina Iljasova - S311806
 
 # Arbeidsfordeling
 
 I oppgaven har vi hatt følgende arbeidsfordeling:
-* Per har hatt hovedansvar for oppgave 1, 3, og 5. 
-* Else har hatt hovedansvar for oppgave 2, 4, og 6. 
-* Fatima har hatt hovedansvar for oppgave 7 og 8. 
+* Ridwan har hatt hovedansvar for oppgave 3, 7, og 8. 
+* Soukaina har hatt hovedansvar for oppgave 1, 2, og 6. 
+* Zarina har hatt hovedansvar for oppgave 4, 5 og 9. 
 * Vi har i fellesskap løst oppgave 10. 
 
