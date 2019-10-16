@@ -15,6 +15,7 @@ import java.util.StringJoiner;
 import java.util.Iterator;
 import java.util.Objects;
 import java.util.function.Predicate;
+import no.oslomet.cs.algdat.DobbeltLenketListe;
 
 
 
@@ -190,17 +191,20 @@ public class DobbeltLenketListe<T> implements Liste<T> {
 
     @Override
     public int indeksTil(T verdi) {
-        int index = 0;
-        if (!verdi.equals(null)) return -1;
-        for (Node<T> temp = hale; temp.forrige != null; temp = temp.forrige) {
-            if (temp.verdi.equals(verdi)) {
-                return index;
-            }
-            else if (temp.equals(hode) && !temp.verdi.equals(verdi)) return -1;
-            index++;
+
+      
+        Node<T> temp = hode;
+      for(int i = 0 ; i<antall;i++ ){
+                if(temp.verdi.equals(verdi)){
+                    return i;
+                }
+            temp= temp.neste;
+
+
 
         }
-        throw new NotImplementedException();
+        return -1;
+
     }
 
     @Override
@@ -416,9 +420,17 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     } // class DobbeltLenketListeIterator
 
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
+        if (liste.antall() < 2)
+            return;
 
-        if (liste.antall() == 0) throw new NotImplementedException();
-        for (Node<T> current = ((no.oslomet.cs.algdat.DobbeltLenketListe) liste).hode; current.neste != null; current = current.neste) {
+        T a = liste.hent(0);
+        T b = liste.hent(1);
+        while ()
+        c.compare(a,b);
+
+        DobbeltLenketListe l = (DobbeltLenketListe) liste;
+
+        for (Node<T> current = l.hode; current.neste != null; current = current.neste) {
             for (Node<T> other = current.neste; other.neste != null; other = other.neste) {
                 if (c.compare(current.verdi, other.verdi) > 0) {
                     T temp = other.verdi;
