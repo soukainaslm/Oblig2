@@ -293,43 +293,15 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     @Override
     public String toString() {
 
-        if (tom()) return "[]";
-
-        StringBuilder sb = new StringBuilder();
-        sb.append('[');
-
-        Node<T> node = hode;
-
-        sb.append(node.verdi);
-        node = node.neste;
-
-        while (node != null) {
-            sb.append(',').append(' ').append(node.verdi);
-            node = node.neste;
-        }
-
-        sb.append(']');
-        return sb.toString();
+        StringJoiner sj = new StringJoiner(", ", "[", "]");
+        for (Node<T> p = hode; p != null; p = p.neste) sj.add(p.verdi.toString());
+        return sj.toString();
     }
 
     public String omvendtString() {
-        if (tom()) return "[]";
-
-        StringBuilder sb = new StringBuilder();
-        sb.append('[');
-
-        Node<T> node = hale;
-
-        sb.append(node.verdi);
-        node = node.forrige;
-
-        while (node != null) {
-            sb.append(',').append(' ').append(node.verdi);
-            node = node.forrige; //Verdiene kommer i omvendt rekkefølge
-        }
-
-        sb.append(']');
-        return sb.toString();
+        StringJoiner sj = new StringJoiner(", ", "[", "]");
+        for (Node<T> p = hale; p != null; p = p.forrige) sj.add(p.verdi.toString());
+        return sj.toString();
     }
 
     @Override
@@ -420,26 +392,23 @@ public class DobbeltLenketListe<T> implements Liste<T> {
     } // class DobbeltLenketListeIterator
 
     public static <T> void sorter(Liste<T> liste, Comparator<? super T> c) {
-        if (liste.antall() < 2)
-            return;
-
-        T a = liste.hent(0);
-        T b = liste.hent(1);
-        while ()
-        c.compare(a,b);
-
-        DobbeltLenketListe l = (DobbeltLenketListe) liste;
-
-        for (Node<T> current = l.hode; current.neste != null; current = current.neste) {
-            for (Node<T> other = current.neste; other.neste != null; other = other.neste) {
-                if (c.compare(current.verdi, other.verdi) > 0) {
-                    T temp = other.verdi;
-                    other.verdi = current.verdi;
-                    current.verdi = temp;
+        for (int n = liste.antall(); n > 0; n--)
+        {
+            Iterator<T> iterator = liste.iterator();
+            int m = 0;
+            T minverdi = iterator.next();
+            for (int i = 1; i < n; i++)
+            {
+                T verdi = iterator.next();
+                if (c.compare(verdi,minverdi) < 0)
+                {
+                    m = i; minverdi = verdi;
                 }
             }
+            liste.leggInn(liste.fjern(m));
+            }
         }
-    }
+
 } // class DobbeltLenketListe
 
 
